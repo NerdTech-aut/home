@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NerdTech</title>
+  <link rel="icon" type="image/x-icon" href="./assets/resources/circle-nodes-solid-full.svg"/>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+  />
+    
+  <style>
+    body {
+      height: 100%;
+      width: 100%;
+      overscroll-behavior: none; /* Prevent bounce effects passing through */
+    }
+
+    .navbar,
+    .navbar-bg {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* 3. Turn .card-container into the scrollable area (fills remaining space below navbar) */
+    #card-container {
+      top: 56px; /* Positioned below the fixed navbar */
+      bottom: 0;
+      width: 100%;
+      height: auto; /* Let top/bottom define the height */
+      -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+    }
+
+    /* 4. Update Sticky Card Height */
+    .custom-full-screen-card {
+      top: 0;
+      height: 100%; 
+      width: 100%;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.5); 
+     /*overflow: hidden;*/
+    }
+
+    /* Animation when card is active */
+    .custom-full-screen-card.active .content-box {
+      opacity: 1 !important;
+      transform: translateY(0);
+    }
+
+    /* Content Styling */
+    .content-box {
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    #card-container,
+    #home,
+    #about,
+    #projects,
+    #academia,
+    #footer,
+    .modal-content {
+      background-size: cover;
+      background-position: bottom;
+    }
+
+    #home,
+    .card0bg { 
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/optical-fiber-7204074.webp');
+    }
+
+    #about,
+    .card1bg {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/optical-fiber-7204073.webp');
+    }
+
+    #projects,
+    .card2bg { 
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/luminous-7204068.webp');
+    }
+
+    #academia,
+    .card3bg { 
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/optical-fiber-7204078.webp');
+    }
+
+    #footer,
+    .card4bg,
+    .modal-content {       
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/luminous-7204052.webp');
+    }
+
+    .custom-bg-semi-transparent {
+      background-color: rgba(34, 37, 41, 0.75);
+    }
+
+    .custom-link-icon {
+      height: 1.5rem !important;
+    }
+
+    .custom-max-size {
+      max-width: 540px;
+    }
+
+    .accordion-button:not(.collapsed) {
+      /*ensure that the bottom most accordion button changes shape when the section is opened or closed*/
+      border-bottom-left-radius: 0px !important;
+      border-bottom-right-radius: 0px !important;
+    }
+  </style>
+</head>
+<body class="text-white bg-black overflow-hidden position-fixed"> <!--/* 2. position: fixed; Optional: Fix body to prevent iOS bounce (The "Nuclear" option) */-->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold navigation-link" href="home">NerdTech</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a class="nav-link navigation-link" href="home">Home</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="about">About</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="academia">Academia</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="footer">Footer</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="card-container" class="position-absolute overflow-y-auto">
+    <section id="home" class="custom-full-screen-card d-flex justify-content-center align-items-center position-sticky">
+      <div class="container content-box opacity-0 p-4">
+        <div class="row align-items-center">
+          <div class="col-lg-12 mb-5 mb-lg-0">
+            <h1 class="display-3 fw-bold lh-1 mb-5 text-white">Here to help others get connected</h1>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="about" class="btn btn-primary btn-lg rounded-pill px-4 navigation-link">About Me</a>
+              <a href="projects" class="btn btn-success btn-lg rounded-pill px-4 navigation-link">My Projects</a>
+              <a href="academia" class="btn btn-outline-light btn-lg rounded-pill px-4 navigation-link">Academia</a>
+              <a href="footer" class="btn btn-outline-info btn-lg rounded-pill px-4 navigation-link">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="custom-full-screen-card d-flex justify-content-center align-items-center position-sticky">
+      <div class="container py-4 content-box opacity-0 p-4">
+        <div class="row align-items-center gx-5">
+          <div class="col-lg-8 col-xl-6">
+            <h2 class="fw-bold text-white mb-4">About Me</h2>
+            <p class="text-light mb-4">
+              Since 2016 I've been helping others achieve better connectivity.
+            </p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                   <span class="text-light">
+                    <a class="icon-link" href="https://www.lteforum.at/user/nerdtech.4949/">LTEForum.at as NerdTech 
+                      <i class="bi bi-box-arrow-up-right custom-link-icon"></i>
+                    </a> 
+                    <br>
+                    2750+ posts and counting
+                    <br class="d-none d-md-block">
+                    since 2017
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <span class="text-light">
+                    <a class="icon-link" href="https://prepaid-data-sim-card.fandom.com/wiki/Special:Contributions/NetworkTechGuy">Prepaid Data SIM Card Wiki 
+                      <i class="bi bi-box-arrow-up-right custom-link-icon"></i>
+                    </a> 
+                    <br>
+                    675+ edits and counting
+                    <br class="d-none d-md-block">
+                    since 2020
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-lock-fill text-danger me-2"></i>
+                  <span class="text-light">
+                    A1 Community as NerdTech 
+                    <br>
+                    1250+ posts
+                    <br class="d-none d-md-block">
+                    from 2016 to 2025
+                    <br>
+                    forum closed
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-lock-fill text-danger me-2"></i>
+                  <span class="text-light">
+                    Magenta Community as NTM 
+                    <br>
+                    1600+ posts
+                    <br class="d-none d-md-block">
+                    from 2019 to 2025
+                    <br>
+                    forum closed
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="custom-full-screen-card d-flex justify-content-center align-items-center position-sticky">
+      <div class="container content-box opacity-0 p-4">
+        <h2 class="fw-bold mb-4 text-white">My Projects</h2>
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="card custom-bg-semi-transparent text-white border-0 h-100">
+              <div class="card-body p-3 border border-secondary rounded-3">
+                <h5 class="h5">CM CSV Data Viewer</h5>
+                <p class="mb-1">Web tool for a detailed look at your collected CellMapper data.</p>
+                <p class="mb-0">
+                  <a class="icon-link text-light text-decoration-none me-2" href="https://github.com/NerdTech-aut/cmcdv">
+                    <i class="bi bi-github custom-link-icon"></i> GitHub
+                  </a>
+                  <a class="icon-link text-light text-decoration-none" href="https://cmcdv.nerdtech.one/">
+                    <i class="bi bi-box-arrow-up-right custom-link-icon"></i> WebTool
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card custom-bg-semi-transparent text-white border-0 h-100">
+              <div class="card-body p-3 border border-secondary rounded-3">
+                <h5 class="h5">A1 DSL network maps</h5>
+                <p class="mb-1">Maps showing the telephone exchanges across Austria and planned build-out areas in Vienna.</p>
+                <p class="mb-0">
+                  <a class="icon-link text-light text-decoration-none me-2" href="https://www.google.com/maps/d/viewer?mid=1JiaojGni3e9-8L26mBrLXIX4IUYDPuEf&usp=sharing">
+                    <i class="bi bi-box-arrow-up-right custom-link-icon"></i> VST Map
+                  </a>
+                  <a class="icon-link text-light text-decoration-none" href="https://www.google.com/maps/d/viewer?mid=1tr1hLRyN1q5sHXfB8w0DTQsdKa70CsMH&usp=sharing">
+                    <i class="bi bi-box-arrow-up-right custom-link-icon"></i> Vienna Map
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card custom-bg-semi-transparent text-white border-0 h-100">
+              <div class="card-body p-3 border border-secondary rounded-3">
+                <h5 class="h5">Stay tunned</h5>
+                <p class="mb-0">More announcements to come.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="academia" class="custom-full-screen-card d-flex justify-content-center align-items-center position-sticky">
+      <div class="container">
+        <div class="row justify-content-center content-box opacity-0 p-4">
+          <div class="custom-max-size p-0">
+            <h2 class="fw-bold mb-4 text-center">Academic Path</h2>
+            <ol class="list-group list-group-numbered rounded-4">
+              <li class="list-group-item custom-bg-semi-transparent border-secondary text-white d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  High-school 2014 to 2019
+                  <br>
+                  Focus on Information Technologies and Networking
+                </div>
+              </li>
+              <li class="list-group-item custom-bg-semi-transparent border-secondary text-white d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  Bachelors in Science 2020 to 2022
+                  <br>
+                  Information and Communication Systems
+                </div>
+              </li>
+              <li class="list-group-item custom-bg-semi-transparent border-secondary text-white d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  Masters in Science 2022 to 2024
+                  <br>
+                  Internet of Things and Intelligent Systems
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="footer" class="custom-full-screen-card d-flex justify-content-center align-items-center position-sticky">
+      <div class="container">
+        <div class="row justify-content-center content-box opacity-0 p-4">
+          <div class="col-lg-6 text-center">
+            <h2 class="fw-bold mb-4">NerdTech</h2>
+            <p class="mb-4 fs-5">
+              <a href="mailto:contact@nerdtech.one" class="text-light text-decoration-none">
+                contact@nerdtech.one
+              </a>
+            </p>
+            <p class="mb-4 fs-5"><a href="https://github.com/NerdTech-aut" target="_blank" class="text-decoration-none text-light me-3"><i class="bi bi-github"></i></a><a href="https://www.linkedin.com/in/florian-jeschek/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-linkedin"></i></a></p>
+            <p class="mb-4 fs-5">Made with ❤️ in Austria</p>
+            <p class="mb-4 fs-5">2026</p>
+            <p class="mb-4 fs-5"><a href="#" data-bs-toggle="modal" data-bs-target="#imprintModal" class="text-decoration-none text-light">Impressum</a> | <a href="#" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal" class="text-decoration-none text-light">Datenschutz</a></p>
+        </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal fade" id="imprintModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header navbar-bg py-2">
+          <p class="navbar-brand fw-bold fs-5 navigation-link mb-0 py-1">NerdTech</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-12 col-xxl-6 text-center mt-3 mb-4">
+                <h1 class="text-light">Impressum</h1>
+              </div>
+            </div>
+            <div class="row g-3 mb-3 justify-content-center">
+              <div class="col-12 col-xxl-6 text-center p-0">
+                <div class="accordion" id="imprintAccordion">
+                  <div class="accordion-item rounded-top-4 border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white rounded-top-4 shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneImprint" aria-expanded="true" aria-controls="collapseOneImprint">
+                        Allgemeine Informationen & Anschrift
+                      </button>
+                    </h2>
+                    <div id="collapseOneImprint" class="accordion-collapse collapse show" data-bs-parent="#imprintAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Allgemeine Informationen & Anschrift</h3>
+                                <p><b>Informationen und Offenlegung gemäß &sect;5 (1) ECG, &sect; 25 MedienG, &sect; 63 GewO und &sect; 14 UGB</b></p>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item border-0">Webseitenbetreiber: Florian Jeschek</li>
+                                  <li class="list-group-item border-0">Anschrift: Hohenfelsplatz 2/7 1120 Wien Österreich</li>
+                                  <li class="list-group-item border-0">E-Mail: <a href="mailto:contact@nerdtech.one">contact@nerdtech.one</a></li>
+                                  <li class="list-group-item border-0">Anwendbare Rechtsvorschrift: <a href="https://www.ris.bka.gv.at" target="_blank">www.ris.bka.gv.at</a></li>
+                                </ul>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://www.fairesrecht.at/kostenlos-impressum-erstellen-generator.php" target="_blank">Impressum Generator</a> in Kooperation mit <a href="https://rechtsanwaltwien.com/arzthaftung" target="_blank">Medizinrecht Rechtsanwalt</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoImprint" aria-expanded="true" aria-controls="collapseTwoImprint">
+                        Online Streitbeilegung
+                      </button>
+                    </h2>
+                    <div id="collapseTwoImprint" class="accordion-collapse collapse" data-bs-parent="#imprintAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Online Streitbeilegung</h3>
+                                <p>Verbraucher, welche in Österreich oder in einem sonstigen Vertragsstaat der ODR-VO niedergelassen sind, haben die Möglichkeit Probleme bezüglich dem entgeltlichen Kauf von Waren oder Dienstleistungen im Rahmen einer Online-Streitbeilegung (nach OS, AStG) zu lösen. Die Europäische Kommission stellt eine Plattform hierfür bereit: https://ec.europa.eu/consumers/odr</p>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://www.fairesrecht.at/kostenlos-impressum-erstellen-generator.php" target="_blank">Impressum Generator</a> in Kooperation mit <a href="https://rechtsanwaltwien.com/arzthaftung" target="_blank">Medizinrecht Rechtsanwalt</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeImprint" aria-expanded="false" aria-controls="collapseThreeImprint">
+                        Urheberrecht
+                      </button>
+                    </h2>
+                    <div id="collapseThreeImprint" class="accordion-collapse collapse" data-bs-parent="#imprintAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Urheberrecht</h3>
+                                <p>Die Inhalte dieser Webseite unterliegen, soweit dies rechtlich möglich ist, diversen Schutzrechten (z.B dem Urheberrecht). Jegliche Verwendung/Verbreitung von bereitgestelltem Material, welche urheberrechtlich untersagt ist, bedarf schriftlicher Zustimmung des Webseitenbetreibers.</p>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://www.fairesrecht.at/kostenlos-impressum-erstellen-generator.php" target="_blank">Impressum Generator</a> in Kooperation mit <a href="https://rechtsanwaltwien.com/arzthaftung" target="_blank">Medizinrecht Rechtsanwalt</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiveImprint" aria-expanded="false" aria-controls="collapseFiveImprint">
+                        Haftungsausschluss
+                      </button>
+                    </h2>
+                    <div id="collapseFiveImprint" class="accordion-collapse collapse" data-bs-parent="#imprintAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Haftungsausschluss</h3>
+                                <p>Trotz sorgfältiger inhaltlicher Kontrolle übernimmt der Webseitenbetreiber dieser Webseite keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich. Sollten Sie dennoch auf ausgehende Links aufmerksam werden, welche auf eine Webseite mit rechtswidriger Tätigkeit/Information verweisen, ersuchen wir um dementsprechenden Hinweis, um diese nach § 17 Abs. 2 ECG umgehend zu entfernen.</p>
+                                <p>Die Urheberrechte Dritter werden vom Betreiber dieser Webseite mit größter Sorgfalt beachtet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden derartiger Rechtsverletzungen werden wir den betroffenen Inhalt umgehend entfernen.</p>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://www.fairesrecht.at/kostenlos-impressum-erstellen-generator.php" target="_blank">Impressum Generator</a> in Kooperation mit <a href="https://rechtsanwaltwien.com/arzthaftung" target="_blank">Medizinrecht Rechtsanwalt</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourImprint" aria-expanded="false" aria-controls="collapseFourImprint">
+                        Markenhinweise
+                      </button>
+                    </h2>
+                    <div id="collapseFourImprint" class="accordion-collapse collapse" data-bs-parent="#imprintAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Markenhinweise</h3>
+                                <p>A1 ist eine Marke der A1 Telekom Austria AG</p>
+                                <p>Magenta ist eine Marke von Deutsche Telekom AG</p>
+                                <p>CellMapper ist eine Marke der CellMapper Services Limited</p>
+                                <p>GitHub und das GitHub Logo sind Marken der GitHub Inc.</p>
+                                <p>LinkedIn und das LinkedIn Logo sind Marken der LinkedIn Corporation</p>
+                                <p class="mb-0">jsDelivr ist eine Marke der JSD Limited</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item rounded-bottom-4 border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed rounded-bottom-4 shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSixImprint" aria-expanded="false" aria-controls="collapseSixImprint">
+                        Bildernachweis
+                      </button>
+                    </h2>
+                    <div id="collapseSixImprint" class="accordion-collapse collapse" data-bs-parent="#imprintAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3 rounded-bottom-4">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Bildernachweis</h3>
+                                <p>Die folgen Bilder werden im Rahmen der <a href="https://pixabay.com/service/license-summary/" target="_blank">Pixabay Content License</a> verwendet:</p>
+                                <ul class="list-group list-group-flush mb-3">
+                                  <li class="list-group-item border-0"><a href="https://pixabay.com/users/%e9%a5%bf%e7%8b%90%e7%bd%91www_ewhooo_com-112701/" target="_blank">饿狐网www_ewhooo_com</a> - <a href="https://pixabay.com/photos/optical-fiber-meteor-shower-luminous-7204074/" target="_blank">optical-fiber-7204074</a></li>
+                                  <li class="list-group-item border-0"><a href="https://pixabay.com/users/%e9%a5%bf%e7%8b%90%e7%bd%91www_ewhooo_com-112701/" target="_blank">饿狐网www_ewhooo_com</a> - <a href="https://pixabay.com/photos/optical-fiber-luminous-line-7204073/" target="_blank">optical-fiber-7204073</a></li>
+                                  <li class="list-group-item border-0"><a href="https://pixabay.com/users/%e9%a5%bf%e7%8b%90%e7%bd%91www_ewhooo_com-112701/" target="_blank">饿狐网www_ewhooo_com</a> - <a href="https://pixabay.com/photos/luminous-lights-purple-lights-7204068/" target="_blank">luminous-7204068</a></li>
+                                  <li class="list-group-item border-0"><a href="https://pixabay.com/users/%e9%a5%bf%e7%8b%90%e7%bd%91www_ewhooo_com-112701/" target="_blank">饿狐网www_ewhooo_com</a> - <a href="https://pixabay.com/photos/optical-fiber-meteor-shower-luminous-7204078/" target="_blank">optical-fiber-7204078</a></li>
+                                  <li class="list-group-item border-0"><a href="https://pixabay.com/users/%e9%a5%bf%e7%8b%90%e7%bd%91www_ewhooo_com-112701/" target="_blank">饿狐网www_ewhooo_com</a> - <a href="https://pixabay.com/photos/luminous-lights-bokeh-night-lights-7204052/" target="_blank">luminous-7204052</a></li>
+                                </ul>
+                                <p>Das Favicon wird unter der <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a> von Fonticons, Inc. verwendet. In diesem Zusammenhang gilt für SVG Icons, wie sie in diesem Fall verwendet werden, die <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</p>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item"><a href="https://fontawesome.com/" target="_blank">Fonticons, Inc.</a> - <a href="https://fontawesome.com/icons/circle-nodes?f=classic&s=solid" target="_blank">circle-nodes</a><p>Die SVG Datei wurde dahingehend verändert, dass sich die Füllfarbe automatisch an die Hintergrundfarbe anpasst.</p></li>
+                                </ul>
+                                <p>Weitere Icons sind <a href="https://icons.getbootstrap.com/" target="_blank">Bootstrap Icons</a> vom Bootstrap team und Mitwirkenden unter der <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank">MIT License</a>.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer navbar-bg">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header navbar-bg py-2">
+          <p class="navbar-brand fw-bold fs-5 navigation-link mb-0 py-1">NerdTech</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-12 col-xxl-6 text-center mt-3 mb-4">
+                <h1 class="h1-super-size h1-hero text-light">Datenschutzerklärung</h1>
+              </div>
+            </div>
+            <div class="row g-3 mb-3 justify-content-center">
+              <div class="col-12 col-xxl-6 text-center p-0">
+                <div class="accordion" id="privacyPolicyAccordion">
+                  <div class="accordion-item rounded-top-4 border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white rounded-top-4 shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOnePrivacyPolicy" aria-expanded="true" aria-controls="collapseOnePrivacyPolicy">
+                        Allgemeine Informationen
+                      </button>
+                    </h2>
+                    <div id="collapseOnePrivacyPolicy" class="accordion-collapse collapse show" data-bs-parent="#privacyPolicyAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Allgemeine Informationen</h3>
+                                <p>In folgender Datenschutzerklärung informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Webseite. Wir erheben und verarbeiten personenbezogene Daten nur auf Grundlage der gesetzlichen Bestimmungen (Datenschutzgrundverordnung, Telekommunikationsgesetz 2003).</p>
+                                <p>Sobald Sie als Benutzer auf unsere Webseite zugreifen oder diese besuchen wird Ihre IP-Adresse, Beginn sowie Beginn und Ende der Sitzung erfasst. Dies ist technisch bedingt und stellt somit ein berechtigtes Interesse iSv Art 6 Abs 1 lit f DSGVO.</p>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://fairesrecht.at/kostenlos-datenschutzerklaerung-erstellen-generator.php" target="_blank">DSGVO Datenschutz Generator</a> in Kooperation mit <a href="https://kredit123.at/home" target="_blank">Online Kreditvergleich</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoPrivacyPolicy" aria-expanded="true" aria-controls="collapseTwoPrivacyPolicy">
+                        Kontakt
+                      </button>
+                    </h2>
+                    <div id="collapseTwoPrivacyPolicy" class="accordion-collapse collapse" data-bs-parent="#privacyPolicyAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Kontakt</h3>
+                                <p>Wenn Sie mich per Email kontaktieren, dann werden die von Ihnen an übermittelten Daten zwecks Bearbeitung Ihrer Anfrage oder für den Fall von weiteren Anschlussfragen für sechs Monate bei uns gespeichert. Es erfolgt, ohne Ihre Einwilligung, keine Weitergabe Ihrer übermittelten Daten.</p>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://fairesrecht.at/kostenlos-datenschutzerklaerung-erstellen-generator.php" target="_blank">DSGVO Datenschutz Generator</a> in Kooperation mit <a href="https://kredit123.at/home" target="_blank">Online Kreditvergleich</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreePrivacyPolicy" aria-expanded="false" aria-controls="collapseThreePrivacyPolicy">
+                        Hosting mit GitHub Pages
+                      </button>
+                    </h2>
+                    <div id="collapseThreePrivacyPolicy" class="accordion-collapse collapse" data-bs-parent="#privacyPolicyAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Hosting mit Github Pages</h3>
+                                <p>Der Hoster erhebt in sog. Logfiles folgende Daten, die Ihr Browser übermittelt:</p>
+                                <p>IP-Adresse, die Adresse der vorher besuchten Website (Referer Anfrage-Header), Datum und Uhrzeit der Anfrage, Zeitzonendifferenz zur Greenwich Mean Time, Inhalt der Anforderung, HTTP-Statuscode, übertragene Datenmenge, Website, von der die Anforderung kommt und Informationen zu Browser und Betriebssystem.</p>
+                                <p>Das ist erforderlich, um die Website anzuzeigen und die Stabilität und Sicherheit zu gewährleisten. Dies entspricht dem berechtigten Interesse im Sinne des Art. 6 Abs. 1 S. 1 lit. f DSGVO.</p>
+                                <p>Es erfolgt kein Tracking und ich habe auf diese Daten keinen direkten Zugriff.</p>
+                                <p>Ich setzen für die Zurverfügungstellung dieser Website folgenden Hoster ein:</p>
+                                <p>GitHub Inc.</p>
+                                <p>88 Colin P Kelly Jr St</p>
+                                <p>San Francisco, CA 94107, United States</p>
+                                <p>GitHub B.V.</p>
+                                <p>Prins Bernhardplein 200</p>
+                                <p>Amsterdam 1097JB, The Netherlands</p>
+                                <p><a href="mailto:dpo@github.com">dpo@github.com</a></p>
+                                <p>Dieser ist Empfänger Ihrer personenbezogenen Daten. Dies entspricht dem berechtigten Interesse im Sinne des Art. 6 Abs. 1 S. 1 lit. f DSGVO, selbst keinen Server in den eigenen Räumlichkeiten vorhalten zu müssen. Serverstandort ist USA.</p>
+                                <p>Weitere Informationen zu Widerspruchs- und Beseitigungsmöglichkeiten gegenüber GitHub finden Sie unter:</p>
+                                <p><a href="https://docs.github.com/en/site-policy/privacy-policies" target="_blank">https://docs.github.com/en/site-policy/privacy-policies</a></p>
+                                <p>Sie haben das Recht der Verarbeitung zu widersprechen. Ob der Widerspruch erfolgreich ist, ist im Rahmen einer Interessenabwägung zu ermitteln.</p>
+                                <p>Die Daten werden gelöscht, sobald der Zweck der Verarbeitung entfällt.</p>
+                                <p>Die Verarbeitung der unter diesem Abschnitt angegebenen Daten ist weder gesetzlich noch vertraglich vorgeschrieben. Die Funktionsfähigkeit der Website ist ohne die Verarbeitung nicht gewährleistet.</p>
+                                <p>GitHub hat Compliance-Maßnahmen für internationale Datenübermittlungen umgesetzt. Diese gelten für alle weltweiten Aktivitäten, bei denen GitHub personenbezogene Daten von natürlichen Personen in der EU verarbeitet. Diese Maßnahmen basieren auf den EU-Standardvertragsklauseln (SCCs). Weitere Informationen finden Sie unter:</p>
+                                <p><a href="https://github.com/customer-terms/github-data-protection-agreement" target="_blank">https://github.com/customer-terms/github-data-protection-agreement</a></p>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://opr.vc" target="_blank">open privacy by opr.vc</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourPrivacyPolicy" aria-expanded="false" aria-controls="collapseFourPrivacyPolicy">
+                        jsDelivr CDN
+                      </button>
+                    </h2>
+                    <div id="collapseFourPrivacyPolicy" class="accordion-collapse collapse" data-bs-parent="#privacyPolicyAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>jsDelivr CDN</h3>
+                                <p>Zur Optimierung der Abrufgeschwindigkeit, der Gestaltung und Darstellung der Inhalte unseres Internetauftritts auf unterschiedlichen Endgeräten setzen wir in unserem Internetauftritt den Dienst jsdeliver.com, ein Content Delivery Network („CDN“), ein. Hierbei handelt es sich um einen Open-Source-Dienst der</p>
+                                <p>JSD Limited</p>
+                                <p>Suite 2a1, Northside House, Mount Pleasant,</p> 
+                                <p>Barnet, England, EN4 9EB.</p>
+                                <p>Um die Inhalte unseres Internetauftritts schnell ausliefern zu können, greift der Dienst auf sog. JavaScript-Bibliotheken zurück. Dabei werden entsprechende Dateien von einem Drittserver geladen, der Ihre IP-Adresse erfasst. Wir haben dabei keinen Einfluss darauf, ob Ihre IP-Adresse durch Dritte zu statistischen Zwecken verarbeitet wird.</p>
+                                <p>Die JSD Limited bietet unter <a href="https://www.jsdelivr.com/privacy-policy-jsdelivr-net" rel="nofollow noopener" target="_blank">https://www.jsdelivr.com/privacy-policy-jsdelivr-net</a> weitergehende Datenschutzinformationen an.</p>
+                                <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Beschleunigung der Ladezeiten unseres Internetauftritts sowie in dessen Optimierung.</p>
+                                <p>Um die Ausführung des Java-Script-Codes von jsdeliver.net insgesamt zu verhindern, können Sie einen sog. Java-Script-Blocker installieren, wie bspw. noscript.net oder ghostery.com. Sollten Sie die Ausführung des Java-Script-Codes verhindern oder einschränken, kann dies aus technischen Gründen allerdings dazu führen, dass womöglich nicht sämtliche Inhalte und Funktionen unseres Internetauftritts verfügbar sind.</p>
+                                
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://www.generator-datenschutzerklärung.de" target="_blank">Muster-Datenschutzerklärung</a> der <a href="https://www.bewertung-löschen24.de" target="_blank">Anwaltskanzlei Weiß &amp; Partner</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFivePrivacyPolicy" aria-expanded="false" aria-controls="collapseFivePrivacyPolicy">
+                        Ihre Rechte als Betroffener
+                      </button>
+                    </h2>
+                    <div id="collapseFivePrivacyPolicy" class="accordion-collapse collapse" data-bs-parent="#privacyPolicyAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Ihre Rechte als Betroffener</h3>
+                                <p>Sie als Betroffener haben bezüglich Ihrer Daten, welche bei uns gespeichert sind grundsätzlich ein Recht auf:</p>
+                                <ul class="list-group list-group-flush mb-3">
+                                  <li class="list-group-item border-0">Auskunft</li>
+                                  <li class="list-group-item border-0">Löschung der Daten</li>
+                                  <li class="list-group-item border-0">Berichtigung der Daten</li>
+                                  <li class="list-group-item border-0">Übertragbarkeit der Daten</li>
+                                  <li class="list-group-item border-0">Widerruf und Widerspruch zur Datenverarbeitung</li>
+                                  <li class="list-group-item border-0">Einschränkung</li>
+                                </ul>
+                                <p>Wenn sie vermuten, dass im Zuge der Verarbeitung Ihrer Daten Verstöße gegen das Datenschutzrecht passiert sind, so haben Sie die Möglichkeit sich bei uns <a href="mailto:contact@nerdtech.one">contact@nerdtech.one</a> oder der Datenschutzbehörde zu beschweren.</p>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://fairesrecht.at/kostenlos-datenschutzerklaerung-erstellen-generator.php" target="_blank">DSGVO Datenschutz Generator</a> in Kooperation mit <a href="https://kredit123.at/home" target="_blank">Online Kreditvergleich</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item rounded-bottom-4 border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-white collapsed rounded-bottom-4 shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Sie erreichen uns unter folgenden Kontaktdaten:
+
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#privacyPolicyAccordion">
+                      <div class="accordion-body border-bottom border-secondary px-3 rounded-bottom-4">
+                        <div class="container-fluid px-0">
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <div class="text-center px-3 h-100">
+                                <h3>Sie erreichen uns unter folgenden Kontaktdaten:</h3>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item border-0">Webseitenbetreiber: Florian Jeschek</li>
+                                  <li class="list-group-item border-0">Email: 
+                                    <a href="mailto:contact@nerdtech.one" class="text-decoration-none">
+                                      contact@nerdtech.one
+                                    </a>
+                                  </li>
+                                </ul>
+                                <p class="mb-0">Rechtstext von Quelle: <a href="https://fairesrecht.at/kostenlos-datenschutzerklaerung-erstellen-generator.php" target="_blank">DSGVO Datenschutz Generator</a> in Kooperation mit <a href="https://kredit123.at/home" target="_blank">Online Kreditvergleich</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer navbar-bg">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script>
+    const cardContainer = document.getElementById("card-container"); //get the card container
+    const cards = Array.from(cardContainer.querySelectorAll('section')); //get all cards in the card container
+    const navLinks = document.querySelectorAll('.navigation-link'); //get all navbar navigation buttons by class
+    const navBarLinks = document.querySelectorAll('.nav-link'); //get all navbar navigation buttons by class
+    const navbarCollapsable = document.getElementById('navbarNav'); //get the collapsable section of the nav bar which contains the navbar navigation buttons
+    const bootstrapNavbarCollapse = new bootstrap.Collapse(navbarCollapsable, { toggle: false }); //create a new bootstrap collapse element with the collapsable part of the navbar and set it to collapsed by default - collapsing is small screen only 
+    let activeIndex = 0; //card index set by default to 0
+    let isResizing = false;
+    let resizeStartIndex = activeIndex;
+    let resizeTimer = null;
+
+    function scrollToSection(targetId) {
+      cardContainer.scrollTo({
+        top: cardContainer.clientHeight * cards.indexOf(document.getElementById(targetId)), //get the top pixel value by multiplying the total card container height (incl. margin, padding and border) with the card index of the selected card
+        behavior: 'smooth' //smooth scroll behavior to avoid jumping
+      }); 
+
+      if (window.innerWidth < 992 && navbarCollapsable.classList.contains('show')) {
+        bootstrapNavbarCollapse.hide(); //hide the mobile nav bar
+      }
+    }
+
+    function updateActiveState() {
+      if (isResizing) {
+        activeIndex = resizeStartIndex; //while resizing is active set the active card index to the card index before the size has started
+      } else {
+        const scrollPos = cardContainer.scrollTop; //get the pixels scrolled from the top
+        const containerHeight = cardContainer.clientHeight; //get the total card container height (incl. margin, padding and border)
+        const scrollHeight = cardContainer.scrollHeight; //get to total scrollable height
+
+        activeIndex = Math.floor((scrollPos + (containerHeight * 0.5)) / containerHeight); //calculate active card index by adding the currently scrolled pixels from the top to half of the card container height and dividing the result through card container height  
+      }
+
+      cards.forEach((card, i) => {
+        if (i === activeIndex) {
+          card.classList.add('active'); //when the current card is the active card set the active class - this is to show the content on the card
+        } else {
+          card.classList.remove('active'); //when the current card is not the active card remove the active class
+        }
+      });
+
+      navBarLinks.forEach(link => { //go over all the navigation bar links
+        link.classList.remove('active'); //set each navigation bar link to inactive
+        if(link.getAttribute('href') === cards[activeIndex].id) {
+          link.classList.add('active'); //set the navigation bar link active when the href attribute value matches the active card index ID
+        }
+      });
+    }
+
+    navLinks.forEach(link => { //for each navigation link
+      link.addEventListener('click', (e) => { //add click event listener
+        e.preventDefault(); //override the default link clicking behavior
+        scrollToSection(link.getAttribute('href')); //use the custom scroll to section function to scroll to the section by the id given in the href attribute of the navigation link element
+      });
+    });
+
+    cardContainer.addEventListener('scroll', updateActiveState);
+
+    window.addEventListener('resize', () => {
+      if (!isResizing) {
+        isResizing = true; //when resizing isn't active set resizing status to active
+        resizeStartIndex = activeIndex; //when resizing isn't active save the current card index
+
+        cardContainer.classList.add("card" + resizeStartIndex + "bg")
+
+        cards.forEach((card, i) => {
+            card.classList.add('opacity-0')
+        });
+      }
+
+      if (resizeTimer) clearTimeout(resizeTimer); //cancel a previously set resize timer
+
+      resizeTimer = setTimeout(() => { //after resizing is done set 
+        isResizing = false; //after resizing is done set resizing status to false
+        cardContainer.scrollTo({
+            top: cardContainer.clientHeight * resizeStartIndex,
+            behavior: 'instant' //instant scroll to the desired position
+        }); //scroll to the card before the scrolling began
+
+        updateActiveState();
+
+        cardContainer.classList.remove("card" + resizeStartIndex + "bg")
+
+        cards.forEach((card, i) => {
+            card.classList.remove('opacity-0')
+        });
+      }, 150); //resize debounce delay 150ms
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateActiveState(); //
+    });
+  </script>
+</body>
+</html>
