@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NerdTech</title>
+  <meta name="description" content="Homepage of NerdTech. Here you can learn more about me, my projects and my academic path.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'cdn.jsdelivr.net'">
   <link rel="icon" type="image/x-icon" href="./assets/resources/circle-nodes-solid-full.svg"/>
+  <link rel="preload" as="image" href="./assets/resources/optical-fiber-7204074.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/resources/optical-fiber-7204073.webp" fetchpriority="low">
+  <link rel="preload" as="image" href="./assets/resources/luminous-7204068.webp" fetchpriority="low">
+  <link rel="preload" as="image" href="./assets/resources/optical-fiber-7204078.webp" fetchpriority="low">
+  <link rel="preload" as="image" href="./assets/resources/luminous-7204052.webp" fetchpriority="low">
 
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -118,16 +125,16 @@
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold navigation-link" href="home">NerdTech</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Button Open Mobile Navigation Menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="nav nav-pills">
-          <li class="nav-item"><a class="nav-link navigation-link" href="home">Home</a></li>
-          <li class="nav-item"><a class="nav-link navigation-link" href="about">About</a></li>
-          <li class="nav-item"><a class="nav-link navigation-link" href="projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link navigation-link" href="academia">Academia</a></li>
-          <li class="nav-item"><a class="nav-link navigation-link" href="footer">Footer</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="home" aria-label="Button Home">Home</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="about" aria-label="Button About">About</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="projects" aria-label="Button Projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="academia" aria-label="Button Academia">Academia</a></li>
+          <li class="nav-item"><a class="nav-link navigation-link" href="footer" aria-label="Button Footer">Footer</a></li>
         </ul>
       </div>
     </div>
@@ -142,8 +149,8 @@
             <div class="d-flex gap-3 flex-wrap">
               <a href="about" class="btn btn-primary btn-lg rounded-pill px-4 navigation-link">About Me</a>
               <a href="projects" class="btn btn-success btn-lg rounded-pill px-4 navigation-link">My Projects</a>
-              <a href="academia" class="btn btn-outline-light btn-lg rounded-pill px-4 navigation-link">Academia</a>
-              <a href="footer" class="btn btn-outline-info btn-lg rounded-pill px-4 navigation-link">Contact</a>
+              <a href="academia" class="btn btn-light btn-lg rounded-pill px-4 navigation-link">Academia</a>
+              <a href="footer" class="btn btn-info btn-lg rounded-pill px-4 navigation-link">Contact</a>
             </div>
           </div>
         </div>
@@ -312,7 +319,7 @@
                 contact@nerdtech.one
               </a>
             </p>
-            <p class="mb-4 fs-5"><a href="https://github.com/NerdTech-aut" target="_blank" class="text-decoration-none text-light me-3"><i class="bi bi-github"></i></a><a href="https://www.linkedin.com/in/florian-jeschek/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-linkedin"></i></a></p>
+            <p class="mb-4 fs-5"><a href="https://github.com/NerdTech-aut" target="_blank" class="text-decoration-none text-light me-3" aria-label="GitHub"><i class="bi bi-github"></i></a><a href="https://www.linkedin.com/in/florian-jeschek/" target="_blank" class="text-decoration-none text-light" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></p>
             <p class="mb-4 fs-5">Made with ❤️ in Austria</p>
             <p class="mb-4 fs-5">2026</p>
             <p class="mb-4 fs-5"><a href="#" data-bs-toggle="modal" data-bs-target="#imprintModal" class="text-decoration-none text-light">Impressum</a> | <a href="#" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal" class="text-decoration-none text-light">Datenschutz</a></p>
@@ -327,7 +334,7 @@
       <div class="modal-content">
         <div class="modal-header navbar-bg py-2">
           <p class="navbar-brand fw-bold fs-5 navigation-link mb-0 py-1">NerdTech</p>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Modal"></button>
         </div>
         <div class="modal-body">
           <div class="container-fluid">
@@ -456,7 +463,7 @@
                                 <p>CellMapper ist eine Marke der CellMapper Services Limited</p>
                                 <p>GitHub und das GitHub Logo sind Marken der GitHub Inc.</p>
                                 <p>LinkedIn und das LinkedIn Logo sind Marken der LinkedIn Corporation</p>
-                                <p class="mb-0">jsDelivr ist eine Marke der JSD Limited</p>
+                                <p class="mb-0">jsDelivr ist eine Marke der Volentio JSD Limited</p>
                               </div>
                             </div>
                           </div>
@@ -515,13 +522,13 @@
       <div class="modal-content">
         <div class="modal-header navbar-bg py-2">
           <p class="navbar-brand fw-bold fs-5 navigation-link mb-0 py-1">NerdTech</p>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Modal"></button>
         </div>
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row justify-content-center">
               <div class="col-12 col-xxl-6 text-center mt-3 mb-4">
-                <h1 class="h1-super-size h1-hero text-light">Datenschutzerklärung</h1>
+                <h1 class="text-light">Datenschutzerklärung</h1>
               </div>
             </div>
             <div class="row g-3 mb-3 justify-content-center">
@@ -616,9 +623,9 @@
                     </div>
                   </div>
 
-                  <div class="accordion-item border-0">
+                  <div class="accordion-item">
                     <h2 class="accordion-header">
-                      <button class="accordion-button bg-white collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourPrivacyPolicy" aria-expanded="false" aria-controls="collapseFourPrivacyPolicy">
+                      <button class="accordion-button collapsed shadow-none border-bottom border-secondary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourPrivacyPolicy" aria-expanded="false" aria-controls="collapseFourPrivacyPolicy">
                         jsDelivr CDN
                       </button>
                     </h2>
@@ -629,15 +636,14 @@
                             <div class="col-12">
                               <div class="text-center px-3 h-100">
                                 <h3>jsDelivr CDN</h3>
-                                <p>Zur Optimierung der Abrufgeschwindigkeit, der Gestaltung und Darstellung der Inhalte unseres Internetauftritts auf unterschiedlichen Endgeräten setzen wir in unserem Internetauftritt den Dienst jsdeliver.com, ein Content Delivery Network („CDN“), ein. Hierbei handelt es sich um einen Open-Source-Dienst der</p>
-                                <p>JSD Limited</p>
+                                <p>Zur Optimierung der Abrufgeschwindigkeit, der Gestaltung und Darstellung der Inhalte des Internetauftritts auf unterschiedlichen Endgeräten setze ich in diesem Internetauftritt den Dienst jsdeliver.com, ein Content Delivery Network („CDN“), ein. Hierbei handelt es sich um einen Open-Source-Dienst der</p>
+                                <p>Volentio JSD Limited</p>
                                 <p>Suite 2a1, Northside House, Mount Pleasant,</p> 
                                 <p>Barnet, England, EN4 9EB.</p>
-                                <p>Um die Inhalte unseres Internetauftritts schnell ausliefern zu können, greift der Dienst auf sog. JavaScript-Bibliotheken zurück. Dabei werden entsprechende Dateien von einem Drittserver geladen, der Ihre IP-Adresse erfasst. Wir haben dabei keinen Einfluss darauf, ob Ihre IP-Adresse durch Dritte zu statistischen Zwecken verarbeitet wird.</p>
-                                <p>Die JSD Limited bietet unter <a href="https://www.jsdelivr.com/privacy-policy-jsdelivr-net" rel="nofollow noopener" target="_blank">https://www.jsdelivr.com/privacy-policy-jsdelivr-net</a> weitergehende Datenschutzinformationen an.</p>
-                                <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Beschleunigung der Ladezeiten unseres Internetauftritts sowie in dessen Optimierung.</p>
+                                <p>Um die Inhalte dieses Internetauftritts schnell ausliefern zu können, greift der Dienst auf sog. JavaScript-Bibliotheken zurück. Dabei werden entsprechende Dateien von einem Drittserver geladen, der Ihre IP-Adresse erfasst. Ich haben dabei keinen Einfluss darauf, ob Ihre IP-Adresse durch Dritte zu statistischen Zwecken verarbeitet wird.</p>
+                                <p>Die Volentio JSD Limited bietet unter <a href="https://www.jsdelivr.com/terms/privacy-policy" rel="nofollow noopener" target="_blank">https://www.jsdelivr.com/terms/privacy-policy</a> weitergehende Datenschutzinformationen an.</p>
+                                <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f) DSGVO. Das berechtigte Interesse liegt in der Beschleunigung der Ladezeiten des Internetauftritts sowie in dessen Optimierung.</p>
                                 <p>Um die Ausführung des Java-Script-Codes von jsdeliver.net insgesamt zu verhindern, können Sie einen sog. Java-Script-Blocker installieren, wie bspw. noscript.net oder ghostery.com. Sollten Sie die Ausführung des Java-Script-Codes verhindern oder einschränken, kann dies aus technischen Gründen allerdings dazu führen, dass womöglich nicht sämtliche Inhalte und Funktionen unseres Internetauftritts verfügbar sind.</p>
-                                
                                 <p class="mb-0">Rechtstext von Quelle: <a href="https://www.generator-datenschutzerklärung.de" target="_blank">Muster-Datenschutzerklärung</a> der <a href="https://www.bewertung-löschen24.de" target="_blank">Anwaltskanzlei Weiß &amp; Partner</a></p>
                               </div>
                             </div>
