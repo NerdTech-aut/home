@@ -1,0 +1,101 @@
+@font-face {
+  font-display: swap;
+  font-family: 'bootstrap-icons';
+  src: url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/fonts/bootstrap-icons.woff2') format('woff2');
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overscroll-behavior: none; /* Prevent bounce effects passing through */
+}
+
+.navbar,
+.navbar-bg {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* 3. Turn .card-container into the scrollable area (fills remaining space below navbar) */
+#card-container {
+    top: 56px; /* Positioned below the fixed navbar */
+    bottom: 0;
+    width: 100%;
+    height: auto; /* Let top/bottom define the height */
+    -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+}
+
+/* 4. Update Sticky Card Height */
+.custom-full-screen-card {
+    top: 0;
+    height: 100%; 
+    width: 100%;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5); 
+    /*overflow: hidden;*/
+}
+
+/* Animation when card is active */
+.custom-full-screen-card.active .content-box {
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+
+/* Content Styling */
+.content-box {
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+#card-container,
+#home,
+#about,
+#projects,
+#academia,
+#footer,
+.modal-content {
+    background-size: cover;
+    background-position: bottom;
+}
+
+#home,
+.card0bg { 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/optical-fiber-7204074.webp');
+}
+
+#about,
+.card1bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/optical-fiber-7204073.webp');
+}
+
+#projects,
+.card2bg { 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/luminous-7204068.webp');
+}
+
+#academia,
+.card3bg { 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/optical-fiber-7204078.webp');
+}
+
+#footer,
+.card4bg,
+.modal-content {       
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/resources/luminous-7204052.webp');
+}
+
+.custom-bg-semi-transparent {
+    background-color: rgba(34, 37, 41, 0.75);
+}
+
+.custom-link-icon {
+    height: 1.5rem !important;
+}
+
+.custom-max-size {
+    max-width: 540px;
+}
+
+.accordion-button:not(.collapsed) {
+    /*ensure that the bottom most accordion button changes shape when the section is opened or closed*/
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
