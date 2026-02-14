@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NerdTech</title>
   <meta name="description" content="Homepage of NerdTech. Here you can learn more about me, my projects and my academic path.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; connect-src https://cdn.jsdelivr.net; font-src https://cdn.jsdelivr.net; img-src 'self' data:;">
   <link rel="icon" type="image/x-icon" href="./assets/resources/circle-nodes-solid-full.svg"/>
   <link rel="preload" as="image" href="./assets/resources/optical-fiber-7204074.webp" fetchpriority="high">
 
@@ -23,7 +22,7 @@
     body {
       height: 100%;
       width: 100%;
-      overscroll-behavior: none; /* Prevent bounce effects passing through */
+      overscroll-behavior: none; /* prevent bounce effects passing through */
     }
 
     .navbar,
@@ -31,30 +30,28 @@
       background-color: rgba(255, 255, 255, 0.9);
     }
 
-    /* 3. Turn .card-container into the scrollable area (fills remaining space below navbar) */
     #card-container {
-      top: 56px; /* Positioned below the fixed navbar */
+      top: 56px; /* positioned below the fixed navbar */
       bottom: 0;
       width: 100%;
       height: auto; /* Let top/bottom define the height */
       -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
     }
 
-    /* 4. Update Sticky Card Height */
     .custom-full-screen-card {
       top: 0;
-      height: 100%; 
+      height: 100%;
       width: 100%;
       box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
     }
 
-    /* Animation when card is active */
+    /* animation when card is active */
     .custom-full-screen-card.active .content-box {
       opacity: 1 !important;
       transform: translateY(0);
     }
 
-    /* Content Styling */
+    /* animation when card is no longer active */
     .content-box {
       transform: translateY(30px);
       transition: all 0.8s ease-out;
@@ -110,10 +107,32 @@
     }
 
     .accordion-button:not(.collapsed) {
-      /*ensure that the bottom most accordion button changes shape when the section is opened or closed*/
+      /* ensure that the bottom most accordion button changes shape when the section is opened or closed*/
       border-bottom-left-radius: 0px !important;
       border-bottom-right-radius: 0px !important;
     }
+
+    /* for small screens disable sticky positioning on small screens */
+    @media ((max-height: 665px) and (max-width: 767px)) or (max-height: 499px) {
+      .custom-full-screen-card {
+        position: relative !important;
+        height: auto !important;
+        min-height: calc(100dvh - 56px);
+      }
+
+      .opacity-0 {
+        opacity: 1 !important; /* show content immediately */
+      }
+
+      .custom-full-screen-card.active .content-box {
+        transform: none !important; /* disable animation */
+      }
+
+      .content-box {
+        transform: none !important; /* disable animation */
+      }
+    }
+
   </style>
 </head>
 <body class="text-white bg-black overflow-hidden position-fixed">
@@ -165,11 +184,11 @@
                 <div class="d-flex align-items-start">
                   <i class="bi bi-check-circle-fill text-success me-2"></i>
                    <span class="text-light">
-                    <a class="icon-link" href="https://www.lteforum.at/user/nerdtech.4949/">LTEForum.at as NerdTech 
+                    <a class="icon-link" href="https://www.lteforum.at/user/nerdtech.4949/" target="_blank">LTEForum.at as NerdTech 
                       <i class="bi bi-box-arrow-up-right custom-link-icon"></i>
                     </a> 
                     <br>
-                    2750+ posts and counting
+                    over 2750 posts and counting
                     <br class="d-none d-md-block">
                     since 2017
                   </span>
@@ -179,13 +198,41 @@
                 <div class="d-flex align-items-start">
                   <i class="bi bi-check-circle-fill text-success me-2"></i>
                   <span class="text-light">
-                    <a class="icon-link" href="https://prepaid-data-sim-card.fandom.com/wiki/Special:Contributions/NetworkTechGuy">Prepaid Data SIM Card Wiki 
+                    <a class="icon-link" href="https://www.cellmapper.net/map?MCC=null&MNC=null&type=undefined&latitude=48.214688869095085&longitude=16.367601643069733&zoom=12.26582863315758" target="_blank">CellMapper as NerdTech
                       <i class="bi bi-box-arrow-up-right custom-link-icon"></i>
                     </a> 
                     <br>
-                    675+ edits and counting
+                    over 3.2m data points and counting
+                    <br class="d-none d-md-block">
+                    since 2018
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <span class="text-light">
+                    <a class="icon-link" href="https://prepaid-data-sim-card.fandom.com/wiki/Special:Contributions/NetworkTechGuy" target="_blank">Prepaid Data SIM Card Wiki 
+                      <i class="bi bi-box-arrow-up-right custom-link-icon"></i>
+                    </a> 
+                    <br>
+                    over 675 edits and counting
                     <br class="d-none d-md-block">
                     since 2020
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <span class="text-light">
+                    <a class="icon-link" href="https://overpass-turbo.eu/s/231z" target="_blank">OpenStreetMap
+                      <i class="bi bi-box-arrow-up-right custom-link-icon"></i>
+                    </a> 
+                    <br>
+                    over 700 A1 ARUs and counting
+                    <br class="d-none d-md-block">
+                    since 2025
                   </span>
                 </div>
               </div>
@@ -195,7 +242,7 @@
                   <span class="text-light">
                     A1 Community as NerdTech 
                     <br>
-                    1250+ posts
+                    over 1250 posts
                     <br class="d-none d-md-block">
                     from 2016 to 2025
                     <br>
@@ -209,7 +256,7 @@
                   <span class="text-light">
                     Magenta Community as NTM 
                     <br>
-                    1600+ posts
+                    over 1600 posts
                     <br class="d-none d-md-block">
                     from 2019 to 2025
                     <br>
@@ -729,8 +776,10 @@
     let resizeTimer = null;
 
     function scrollToSection(targetId) {
+      const cardHeights = cards.map(card => card.offsetHeight); //get the heights of all the cards
+      const targetCardIndex = cards.indexOf(document.getElementById(targetId)); //get the index of the target card by the given id
       cardContainer.scrollTo({
-        top: cardContainer.clientHeight * cards.indexOf(document.getElementById(targetId)), //get the top pixel value by multiplying the total card container height (incl. margin, padding and border) with the card index of the selected card
+        top: cardHeights.slice(0, targetCardIndex).reduce((sum, height) => sum + height, 0), //get the card heights of all cards before the target card and sum them up to get the scroll position to the top of the target card
         behavior: 'smooth' //smooth scroll behavior to avoid jumping
       }); 
 
@@ -744,10 +793,15 @@
         activeIndex = resizeStartIndex; //while resizing is active set the active card index to the card index before the size has started
       } else {
         const scrollPos = cardContainer.scrollTop; //get the pixels scrolled from the top
-        const containerHeight = cardContainer.clientHeight; //get the total card container height (incl. margin, padding and border)
-        const scrollHeight = cardContainer.scrollHeight; //get to total scrollable height
-
-        activeIndex = Math.floor((scrollPos + (containerHeight * 0.5)) / containerHeight); //calculate active card index by adding the currently scrolled pixels from the top to half of the card container height and dividing the result through card container height  
+        const cardHeights = cards.map(card => card.offsetHeight); //get the heights of all cards
+        let cumulativeHeight = 0;
+        for (let i = 0; i < cardHeights.length; i++) {
+          cumulativeHeight += cardHeights[i];
+          if (scrollPos < cumulativeHeight - (cardHeights[i] * 0.5)) {
+            activeIndex = i;
+            break;
+          }
+        }
       }
 
       cards.forEach((card, i) => {
