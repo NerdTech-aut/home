@@ -143,7 +143,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills mt-3 mt-sm-3">
           <li class="nav-item"><a class="nav-link navigation-link" href="home" aria-label="Button Home">Home</a></li>
           <li class="nav-item"><a class="nav-link navigation-link" href="about" aria-label="Button About">About</a></li>
           <li class="nav-item"><a class="nav-link navigation-link" href="projects" aria-label="Button Projects">Projects</a></li>
@@ -793,6 +793,9 @@
     }
 
     function updateActiveState() {
+      if (navbarCollapsable.classList.contains('show')) {
+        bootstrapNavbarCollapse.hide();
+      }
       if (isResizing) {
         activeIndex = resizeStartIndex; //while resizing is active set the active card index to the card index before the size has started
       } else {
